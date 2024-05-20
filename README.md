@@ -24,13 +24,67 @@ To set up the project locally, follow these steps:
 
    - Choose a database management system (DBMS) like MySQL, PostgreSQL, or H2.
    - Configure the database connection details in `hibernate.cfg.xml`.
+   - This MySQL hibernate.cfg.xml example includes optional settings to generate and format SQL as well as an instruction to create database tables if any entity beans require them.
 
-4. **Dependency Management:**
-   - Ensure Maven is installed.
-   - Run Maven to resolve dependencies:
-     ```
-     mvn clean install
-     ```
+   ```
+      <?xml version="1.0" encoding="UTF-8"?>
+      <!DOCTYPE hibernate-configuration PUBLIC
+            "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+            "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+      <hibernate-configuration>
+         <session-factory>
+            <!-- Database connection settings -->
+            <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+            <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/hotel_management</property>
+            <property name="hibernate.connection.username">username</property>
+            <property name="hibernate.connection.password">password</property>
+            <property name="hibernate.hbm2ddl.auto">update</property>
+
+            <!-- Hibernate dialect -->
+            <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+
+            <!-- Enable Hibernate automatic session context management -->
+            <property name="hibernate.current_session_context_class">thread</property>
+
+            <!-- Specify the package to scan for entity classes -->
+            <mapping class="org.example.model.Room"/>
+            <mapping class="org.example.model.Guest"/>
+            <mapping class="org.example.model.Invoice"/>
+            <mapping class="org.example.model.Reservation"/>
+         </session-factory>
+      </hibernate-configuration>
+
+   ```
+
+4. **Dependency Management:** 🚗
+
+   - Make sure to include these dependencies in your pom.xml if you're using Maven for dependency management.
+     POM is an acronym for Project Object Model. The pom.xml file contains information of project and configuration information for the maven to build the project such as dependencies, build directory, source directory, test source directory, plugin, goals etc. Maven reads the pom. xml file, then executes the goal.
+
+   ```
+      <dependencies>
+      <dependency>
+         <groupId>junit</groupId>
+         <artifactId>junit</artifactId>
+         <version>3.8.1</version>
+         <scope>test</scope>
+      </dependency>
+
+      <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+      <dependency>
+         <groupId>mysql</groupId>
+         <artifactId>mysql-connector-java</artifactId>
+         <version>8.0.32</version>
+      </dependency>
+      <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
+      <dependency>
+         <groupId>org.hibernate</groupId>
+         <artifactId>hibernate-core</artifactId>
+         <version>6.1.7.Final</version>
+      </dependency>
+   </dependencies>
+
+   ```
 
 ### Usage Instructions 📘
 
@@ -62,10 +116,6 @@ src/main/java
         └── App.java
 
 ```
-
-### Dependencies 🚗
-
-- Make sure you have the necessary dependencies for Hibernate in your project. You'll typically need hibernate-core and the JDBC driver for your database. Make sure to include these dependencies in your pom.xml if you're using Maven for dependency management.
 
 ### Contributing ✨
 
