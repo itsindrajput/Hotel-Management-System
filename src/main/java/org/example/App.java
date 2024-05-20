@@ -1,4 +1,6 @@
 package org.example;
+import org.example.config.Hibernate;
+import org.example.model.Room;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -12,7 +14,7 @@ public class App
         try {
             transaction = session.beginTransaction();
             Room room = new Room();
-            room.setRoomNumber("103");
+            room.setRoomNumber("104");
             room.setRoomType("Double");
             room.setPrice(500.0);
 

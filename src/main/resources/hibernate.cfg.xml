@@ -18,9 +18,9 @@
         <property name="hibernate.current_session_context_class">thread</property>
 
         <!-- Specify the package to scan for entity classes -->
-        <mapping class="org.example.Room"/>
-        <!--        <mapping package="com.example.model.Guest"/>-->
-        <!--        <mapping package="com.example.model.Invoice"/>-->
-        <!--        <mapping package="com.example.model.Reservation"/>-->
+        <mapping class="org.example.model.Room"/>
+        <mapping class="org.example.model.Guest"/>
+        <mapping class="org.example.model.Invoice"/>
+        <mapping class="org.example.model.Reservation"/>
     </session-factory>
 </hibernate-configuration>
