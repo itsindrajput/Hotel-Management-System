@@ -1,18 +1,19 @@
 package org.example.dao;
 
 import org.example.config.Hibernate;
-import org.example.model.Guest;
+import org.example.model.Invoice;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+
 import java.util.List;
 
-public class GuestDAO {
-    public void saveGuest(Guest guest) {
+public class InvoiceDAO {
+    public void saveInvoice(Invoice invoice) {
         Session session = Hibernate.getSession();
         Transaction transaction = null;
         try {
             transaction = session.beginTransaction();
-            session.save(guest);
+            session.save(invoice);
             transaction.commit();
         } catch (Exception e) {
             if (transaction != null) {
@@ -24,38 +25,38 @@ public class GuestDAO {
         }
     }
 
-    public Guest getGuestById(Long id) {
+    public Invoice getInvoiceById(Long id) {
         Session session = Hibernate.getSession();
-        Guest guest = null;
+        Invoice invoice = null;
         try {
-            guest = session.get(Guest.class, id);
+            invoice = session.get(Invoice.class, id);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
             session.close();
         }
-        return guest;
+        return invoice;
     }
 
-    public List<Guest> getAllGuests() {
+    public List<Invoice> getAllInvoices() {
         Session session = Hibernate.getSession();
-        List<Guest> guests = null;
+        List<Invoice> invoices = null;
         try {
-            guests = session.createQuery("FROM Guest", Guest.class).getResultList();
+            invoices = session.createQuery("FROM Invoice", Invoice.class).getResultList();
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
             session.close();
         }
-        return guests;
+        return invoices;
     }
 
-    public void updateGuest(Guest guest) {
+    public void updateInvoice(Invoice invoice) {
         Session session = Hibernate.getSession();
         Transaction transaction = null;
         try {
             transaction = session.beginTransaction();
-            session.update(guest);
+            session.update(invoice);
             transaction.commit();
         } catch (Exception e) {
             if (transaction != null) {
@@ -67,14 +68,14 @@ public class GuestDAO {
         }
     }
 
-    public void deleteGuest(Long id) {
+    public void deleteInvoice(Long id) {
         Session session = Hibernate.getSession();
         Transaction transaction = null;
         try {
             transaction = session.beginTransaction();
-            Guest guest = session.get(Guest.class, id);
-            if (guest != null) {
-                session.delete(guest);
+            Invoice invoice = session.get(Invoice.class, id);
+            if (invoice != null) {
+                session.delete(invoice);
             }
             transaction.commit();
         } catch (Exception e) {

@@ -1,7 +1,6 @@
 package org.example.model;
 
 import jakarta.persistence.*;
-
 import java.time.LocalDate;
 
 @Entity
@@ -25,6 +24,44 @@ public class Reservation {
     @Column(name = "check_out_date")
     private LocalDate checkOutDate;
 
+    public void setRoom(Room room) {
+        this.room = room;
+    }
+
+    public void setGuest(Guest guest) {
+        this.guest = guest;
+    }
+
+    public void setCheckInDate(LocalDate checkInDate) {
+        this.checkInDate = checkInDate;
+    }
+
+    public void setCheckOutDate(LocalDate checkOutDate) {
+        this.checkOutDate = checkOutDate;
+    }
+
     // Getters and setters
-    // ...
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Room getRoom() {
+        return room;
+    }
+
+    public Guest getGuest() {
+        return guest;
+    }
+
+    public LocalDate getCheckInDate() {
+        return checkInDate;
+    }
+
+    public LocalDate getCheckOutDate() {
+        return checkOutDate;
+    }
 }

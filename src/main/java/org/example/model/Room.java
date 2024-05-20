@@ -17,9 +17,17 @@ public class Room {
     @Column(name = "price")
     private double price;
 
-//    @Enumerated(EnumType.STRING)
-//    @Column(name = "status")
-//    private RoomStatus status;
+    public Room() {
+        this.roomNumber = ""; // Default room number is empty
+        this.roomType = ""; // Default room type is empty
+        this.price = 0.0; // Default price is 0.0
+    }
+
+    public Room(String roomNumber, String roomType, double price) {
+        this.roomNumber = roomNumber;
+        this.roomType = roomType;
+        this.price = price;
+    }
 
     // Getters and setters
 
@@ -55,11 +63,14 @@ public class Room {
         this.price = price;
     }
 
-//    public RoomStatus getStatus() {
-//        return status;
-//    }
-//
-//    public void setStatus(RoomStatus status) {
-//        this.status = status;
-//    }
+    // Override toString() method
+    @Override
+    public String toString() {
+        return "Room{" +
+                "id=" + id +
+                ", roomNumber='" + roomNumber + '\'' +
+                ", roomType='" + roomType + '\'' +
+                ", price=" + price +
+                '}';
+    }
 }

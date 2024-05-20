@@ -83,7 +83,6 @@ To set up the project locally, follow these steps:
          <version>6.1.7.Final</version>
       </dependency>
    </dependencies>
-
    ```
 
 ### Usage Instructions 📘
@@ -114,8 +113,12 @@ src/main/java
         │   ├── GuestService.java
         │   └── ReservationService.java
         └── App.java
-
 ```
+
+### Output Menu Options
+
+- This screenshot illustrates the various operations available in the hotel management system, including reading rooms, managing guests, creating reservations, and more.
+- ![Screenshot 2024-05-20 140003](https://github.com/itsindrajput/Hotel-Management-System/assets/70815899/53d7ee7f-a75e-4b3a-ba79-1ed18b1b9673)
 
 ### Contributing ✨
 
