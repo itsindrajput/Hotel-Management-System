@@ -12,6 +12,8 @@ public class InvoiceService {
         invoiceDAO.saveInvoice(invoice);
     }
 
+    // We can Implement other methods if needed:
+
     public Invoice getInvoiceById(Long id) {
         return invoiceDAO.getInvoiceById(id);
     }

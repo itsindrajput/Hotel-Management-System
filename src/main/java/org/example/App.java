@@ -8,7 +8,6 @@ import org.example.service.RoomService;
 import org.example.service.GuestService;
 import org.example.service.ReservationService;
 import org.example.service.InvoiceService;
-
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Scanner;
@@ -22,50 +21,56 @@ public class App {
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
+            System.out.println("-----------------------------");
             System.out.println("Choose an operation:");
-            System.out.println("1: Read Room");
-            System.out.println("2: Create Guest");
-            System.out.println("3: Update Guest");
-            System.out.println("4: Delete Guest");
-            System.out.println("5: Create Reservation");
-            System.out.println("6: Create Invoice");
-            System.out.println("7: List All Rooms");
-            System.out.println("8: List All Guests");
-            System.out.println("9: List All Reservations");
-            System.out.println("10: Exit");
+            System.out.println("1: Create Room");
+            System.out.println("2: Read Room");
+            System.out.println("3: Create Guest");
+            System.out.println("4: Update Guest");
+            System.out.println("5: Delete Guest");
+            System.out.println("6: Create Reservation");
+            System.out.println("7: Create Invoice");
+            System.out.println("8: List All Rooms");
+            System.out.println("9: List All Guests");
+            System.out.println("10: List All Reservations");
+            System.out.println("11: Exit");
+            System.out.println("-----------------------------");
 
             int choice = scanner.nextInt();
             scanner.nextLine(); // Consume newline
 
             switch (choice) {
                 case 1:
-                    readRoom(roomService, scanner);
+                    createRoom(roomService, scanner);
                     break;
                 case 2:
-                    createGuest(guestService, scanner);
+                    readRoom(roomService, scanner);
                     break;
                 case 3:
-                    updateGuest(guestService, scanner);
+                    createGuest(guestService, scanner);
                     break;
                 case 4:
-                    deleteGuest(guestService, scanner);
+                    updateGuest(guestService, scanner);
                     break;
                 case 5:
-                    createReservation(reservationService, scanner);
+                    deleteGuest(guestService, scanner);
                     break;
                 case 6:
-                    createInvoice(invoiceService, scanner);
+                    createReservation(reservationService, scanner);
                     break;
                 case 7:
-                    listAllRooms(roomService);
+                    createInvoice(invoiceService, scanner);
                     break;
                 case 8:
-                    listAllGuests(guestService);
+                    listAllRooms(roomService);
                     break;
                 case 9:
-                    listAllReservations(reservationService);
+                    listAllGuests(guestService);
                     break;
                 case 10:
+                    listAllReservations(reservationService);
+                    break;
+                case 11:
                     System.out.println("Exiting...");
                     scanner.close();
                     return;
@@ -75,13 +80,35 @@ public class App {
         }
     }
 
+    private static void createRoom(RoomService roomService, Scanner scanner) {
+        System.out.println("Enter room number:");
+        String roomNumber = scanner.nextLine();
+        System.out.println("Enter room type:");
+        String roomType = scanner.nextLine();
+        System.out.println("Enter price:");
+        double price = scanner.nextDouble();
+        scanner.nextLine(); // Consume newline
+
+        Room room = new Room();
+        room.setRoomNumber(roomNumber);
+        room.setRoomType(roomType);
+        room.setPrice(price);
+
+        roomService.saveRoom(room);
+        System.out.println("Room created successfully: " + room);
+    }
+
     private static void readRoom(RoomService roomService, Scanner scanner) {
         System.out.println("Enter room ID:");
         Long id = scanner.nextLong();
-        scanner.nextLine(); // Consume newline
+        scanner.nextLine();
 
         Room room = roomService.getRoomById(id);
-        System.out.println("Fetched Room: " + room);
+        if (room != null) {
+            System.out.println("Fetched Room: " + room);
+        } else {
+            System.out.println("Room not found.");
+        }
     }
 
     private static void createGuest(GuestService guestService, Scanner scanner) {
@@ -101,7 +128,7 @@ public class App {
     private static void updateGuest(GuestService guestService, Scanner scanner) {
         System.out.println("Enter guest ID:");
         Long id = scanner.nextLong();
-        scanner.nextLine(); // Consume newline
+        scanner.nextLine();
 
         Guest guest = guestService.getGuestById(id);
         if (guest != null) {
@@ -120,7 +147,7 @@ public class App {
     private static void deleteGuest(GuestService guestService, Scanner scanner) {
         System.out.println("Enter guest ID:");
         Long id = scanner.nextLong();
-        scanner.nextLine(); // Consume newline
+        scanner.nextLine();
 
         guestService.deleteGuest(id);
         System.out.println("Guest deleted successfully.");

@@ -8,16 +8,18 @@ import java.util.List;
 public class RoomService {
     private RoomDAO roomDAO = new RoomDAO();
 
-    public void saveRoom(Room room) {
-        roomDAO.saveRoom(room);
-    }
-
     public Room getRoomById(Long id) {
         return roomDAO.getRoomById(id);
     }
 
     public List<Room> getAllRooms() {
         return roomDAO.getAllRooms();
+    }
+
+    // We can Implement other methods if needed
+
+    public void saveRoom(Room room) {
+        roomDAO.saveRoom(room);
     }
 
     public void updateRoom(Room room) {

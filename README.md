@@ -1,6 +1,6 @@
-## Hotel Management System 🏬🛗
+## Hotel Management System 🏬
 
-### (HMS) - Java with Hibernate
+### (HMS) - Java with Hibernate ♨️
 
 Welcome to our Hotel Management System project! 🎉 Building a Hotel Management System (HMS) in Java using Hibernate for CRUD operations is an excellent project for honing your skills in both Java programming and Hibernate ORM.
 
@@ -56,7 +56,7 @@ To set up the project locally, follow these steps:
 
    ```
 
-4. **Dependency Management:** 🚗
+4. **Dependency Management:**
 
    - Make sure to include these dependencies in your pom.xml if you're using Maven for dependency management.
      POM is an acronym for Project Object Model. The pom.xml file contains information of project and configuration information for the maven to build the project such as dependencies, build directory, source directory, test source directory, plugin, goals etc. Maven reads the pom. xml file, then executes the goal.
@@ -115,7 +115,7 @@ src/main/java
         └── App.java
 ```
 
-### Output Menu Options
+### Output Menu Options 🎉
 
 - This screenshot illustrates the various operations available in the hotel management system, including reading rooms, managing guests, creating reservations, and more.
 - ![Screenshot 2024-05-20 140003](https://github.com/itsindrajput/Hotel-Management-System/assets/70815899/53d7ee7f-a75e-4b3a-ba79-1ed18b1b9673)

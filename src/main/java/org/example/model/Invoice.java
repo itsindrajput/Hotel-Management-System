@@ -65,6 +65,4 @@ public class Invoice {
     public LocalDate getInvoiceDate() {
         return invoiceDate;
     }
-
-    // Additional getters and setters if needed
 }
